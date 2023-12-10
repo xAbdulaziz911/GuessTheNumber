@@ -1,47 +1,34 @@
-import random
-N = input("Choose The Difficulty(easy, normal, hard, veryhard, impossible): ")
-
-if N == "easy":
-  N = 10
-  print("Guess from 1 to 10")
-
-elif N == "normal":
-  N = 50
-  print("Guess from 1 to 50")
-
-elif N == "hard":
-  N = 200
-  print("Guess from 1 to 200")
-
-elif N == "veryhard":
-  N = 10000
-  print("Guess from 1 to 10000")
-
-elif N == "impossible":
-  N = 1000000000
-  print("Guess from 1 to 1.000.000.000💀")
-
-x = random.randint(1, N)
+from random import randint
 s = 0
+modes = {"1": 10, "2": 50, "3": 200, "4": 10000, "5": 1000000000}
+
+for i, mode in enumerate(["Easy","Normal","Hard","Very Hard","Impossible"], start=1):
+    print(f"{i}- {mode}")
+N = input("Choose The Difficulty (enter a number): ")
+
+if N in modes:
+  print(f"Guess from 1 to {modes[N]}")
+  
+  N = modes[N]
+  
+  if isinstance(N, int):  
+    x = randint(1, N)
+  else:
+    print("Difficulty value is not Valid.")
+else:
+  print("Invalid choice. Please choose a valid number.")
+
 while True:
-    user = int(input(">>: "))
-    s += 1
-    
-    if user == x:
-      print("Correct!")
-      print("Number of tries: ",s)
-      break
+  user = int(input(">>: "))
+  s += 1
 
-    else:
-      print("Missed it")
-      if user > x:
-        print("lower!")
-      else:
-        print("higher!")
-
-    
-
-
-
-   
-   
+  if user == x:
+    print("Correct!")
+    print("Number of tries: ",s)
+    break
+  else:
+    print("Missed it")
+  if user > x:
+     print("lower!")
+  else:
+    print("higher!")
