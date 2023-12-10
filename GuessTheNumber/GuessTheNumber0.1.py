@@ -10,18 +10,14 @@ if N in modes:
   print(f"Guess from 1 to {modes[N]}")
   
   N = modes[N]
+  x = randint(1, N)
   
-  if isinstance(N, int):  
-    x = randint(1, N)
-  else:
-    print("Difficulty value is not Valid.")
 else:
   print("Invalid choice. Please choose a valid number.")
 
 while True:
   user = int(input(">>: "))
   s += 1
-
   if user == x:
     print("Correct!")
     print("Number of tries: ",s)
